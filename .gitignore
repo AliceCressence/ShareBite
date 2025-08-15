@@ -1,0 +1,38 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Flask instance folder
+instance/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Virtual environment folders
+venv/
+env/
+.venv/
+.env/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build / distribution files
+build/
+dist/
+*.egg-info/
+
+# Android SDK (prevent CRLF warnings issue)
+AppData/
+
+# IDE/project settings
+.vscode/
+.idea/
+*.iml
+
