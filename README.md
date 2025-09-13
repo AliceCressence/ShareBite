@@ -1,4 +1,4 @@
-# ShearBite
+# ShareBite
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/maragudk/random-assets/main/shearbite-logo.png" alt="ShearBite Logo" width="200"/>
