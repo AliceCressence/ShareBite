@@ -1,0 +1,79 @@
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/db
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin123
+      - MINIO_BUCKET=food-images
+    depends_on:
+      - postgres
+      - minio
+      - traefik
+    labels:
+      - "traefik.http.routers.backend.rule=Host(`api.localhost`)"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - BACKEND_URL=http://backend:8000
+      - NODE_ENV=development
+    labels:
+      - "traefik.http.routers.frontend.rule=Host(`localhost`)"
+    depends_on:
+      - backend
+      - traefik
+
+  postgres:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db
+
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9002:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin123
+    command: server /data --console-address ":9001"
+    labels:
+      - "traefik.http.routers.minio.rule=Host(`minio.localhost`)"
+      - "traefik.http.services.minio.loadbalancer.server.port=9002"
+      - "traefik.http.routers.minio-console.rule=Host(`minio-console.localhost`)"
+      - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
+
+  traefik:
+    image: "traefik:v2.5"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8040:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    command:
+      - "--api.insecure"
+      - "--providers.docker"
+
+volumes:
+  postgres_data:
+  minio_data:
