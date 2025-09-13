@@ -111,7 +111,7 @@ The application is designed with a microservices-based architecture, containeriz
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/ivantana/shearbite.git
+   git clone https://github.com/AliceCressence/ShareBite.git
    ```
 
 2. **Navigate to the project directory:**
