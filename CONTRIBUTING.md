@@ -4,11 +4,11 @@ First off, thank you for considering contributing to ShearBite! It's people like
 
 ## Where do I go from here?
 
-If you've noticed a bug or have a feature request, [make one](https://github.com/ivantana/shearbite/issues/new)! It's generally best if you get confirmation of your bug or approval for your feature request this way before starting to code.
+If you've noticed a bug or have a feature request, [make one](https://github.com/AliceCressence/ShareBite/issues/new)! It's generally best if you get confirmation of your bug or approval for your feature request this way before starting to code.
 
 ### Fork & create a branch
 
-If this is something you think you can fix, then [fork ShearBite](https://github.com/ivantana/shearbite/fork) and create a branch with a descriptive name.
+If this is something you think you can fix, then [fork ShearBite](https://github.com/AliceCressence/ShareBite/fork) and create a branch with a descriptive name.
 
 A good branch name would be (where issue #38 is the ticket you're working on):
 
@@ -29,7 +29,7 @@ At this point, you're ready to make your changes! Feel free to ask for help; eve
 At this point, you should switch back to your master branch and make sure it's up to date with ShearBite's master branch:
 
 ```bash
-git remote add upstream git@github.com:ivantana/shearbite.git
+git remote add upstream git@github.com:AliceCressence/ShareBite.git
 git checkout master
 git pull upstream master
 ```
@@ -42,7 +42,7 @@ git rebase master
 git push --force-with-lease origin 38-add-awesome-new-feature
 ```
 
-Finally, go to GitHub and [make a Pull Request](https://github.com/ivantana/shearbite/compare) :D
+Finally, go to GitHub and [make a Pull Request](https://github.com/AliceCressence/ShareBite/compare) :D
 
 ## Keeping your Pull Request updated
 
